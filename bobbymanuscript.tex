@@ -1,0 +1,210 @@
+\documentclass[aps,amsmath,graphix,amssymb,longbibliography]{revtex4-1}
+
+\usepackage{ulem}
+
+
+\usepackage{color,comment}
+\usepackage{bbold} % for bold-face identity matrix
+
+%define path for figs
+\usepackage[pdftex]{graphicx}
+\graphicspath{{figures/}}
+\usepackage{subfigure}
+\usepackage{hyperref}
+\hypersetup{ 
+	colorlinks   = true
+}
+
+\usepackage{bm}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% Python code %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+% the following lines make sure the pdf code is copy-pastable
+\usepackage{textcomp}
+\usepackage[space=true]{accsupp}
+
+\newcommand{\pdfactualhex}[3]{\newcommand{#1}{%
+		\BeginAccSupp{method=hex,ActualText=#2}#3\EndAccSupp{}}}
+
+\pdfactualhex{\pdfactualdspace}{2020}{\textperiodcentered\textperiodcentered}
+\pdfactualhex{\pdfactualsquote}{27}{'}
+\pdfactualhex{\pdfactualbtick}{60}{`}
+
+% define colours 
+\definecolor{deepblue}{rgb}{0,0,0.8}
+\definecolor{deepred}{rgb}{1.0,0,0}
+\definecolor{deepgreen}{rgb}{0,0.7,0}
+\definecolor{blueviolet}{RGB}{138,43,226}
+\definecolor{darkyellow}{RGB}{204,204,0}
+\definecolor{codegray}{rgb}{0.6,0.6,0.6}
+\definecolor{weborange}{RGB}{255,165,0}
+\definecolor{gold}{RGB}{255,205,0}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+
+%\definecolor{backcolour}{rgb}{0.0,0.0,0.0}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{sublime}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{deepgreen},
+	keywordstyle=\color{deepred},
+	numberstyle=\tiny,
+	stringstyle=\color{weborange},
+	basicstyle=\small\ttfamily, %\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=t,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=4,
+	columns=flexible,
+	emptylines=10000,
+	literate={'}{\pdfactualsquote}1{`}{\pdfactualbtick}1{\ \ }{\pdfactualdspace}2,
+	inputpath=./code_snippets,
+	keywords={lambda,xrange,abs,for,return},
+}
+\lstset{style=sublime,language=Python}
+
+% change default listings caption title
+\renewcommand{\lstlistingname}{\emph{Code Snippet}}% Listing -> q\spin\ Example Code
+
+
+%%%%%% the following lines put the slashed zero in the code environtmnet listings
+
+\usepackage{marvosym,etoolbox}
+% this replaces 0 with \0 in lstings
+\lstset{literate={0}{\0}1{0\ }{\0\ }2}
+
+\renewcommand*\ttdefault{txtt}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+% defines \0 as mirro of 0
+\newcommand\0{\scalebox{-1}[1]{0}}
+% fix for \texttt and \ttfamily
+\let\svttfamily\ttfamily
+\let\svtexttt\texttt
+\catcode`0=\active
+\def0{\0}
+\renewcommand\ttfamily{\svttfamily\catcode`0=\active }
+\renewcommand\texttt{\bgroup\ttfamily\texttthelp}
+\def\texttthelp#1{#1\egroup}
+\catcode`0=12 %
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\vq}{{\vec q}}
+\newcommand{\vf}{v_{\rm F}}
+\newcommand{\kf}{k_{\rm F}}
+\newcommand{\Phio}{\Phi_0} 
+\newcommand{\tp}{t_\perp}
+\newcommand{\Hca}{\mathcal{H}}
+\newcommand{\vk}{{\bf k}}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+% short-cut text colouring
+\newcommand*{\red}{\textcolor{red}}
+\newcommand*{\blue}{\textcolor{blue}}
+\newcommand*{\green}{\textcolor{green}}
+\newcommand*{\pink}{\textcolor{pink}}
+\newcommand*{\cyan}{\textcolor{cyan}}
+
+
+\definecolor{shiningblue}{rgb}{0.3,0.68,0.89}
+\definecolor{pastel_red}{rgb}{1,0.41,0.38}
+\definecolor{pastel_green}{rgb}{0.18,0.65,0.34}
+\definecolor{pastel_blue}{rgb}{0.47,0.7,0.9}
+%\definecolor{soft_blue}{rgb}{0.26,0.60,0.80}
+%\definecolor{soft_blue}{rgb}{0.23,0.54,0.72}
+\definecolor{soft_blue}{rgb}{0,0,0}
+\definecolor{deeplilac}{rgb}{0.6, 0.33, 0.73}
+
+
+% it is helpful for collaborative editing to define personalized colors
+% and this is easier than having to write your name all the time
+\newcommand{\clint}[1]{{\color{blue}#1}}
+\newcommand{\marin}[1]{{\color{cyan}#1}}
+\newcommand{\charles}[1]{{\color{deeplilac}#1}}
+\newcommand{\CHW}[1]{\textcolor{pastel_green}{#1}}
+\newcommand{\pankaj}[1]{\textcolor{pastel_red}{#1}}
+
+
+
+\newcommand{\rates}[2]{\displaystyle
+  \mathrel{\longrightleftharpoons^{#1\mathstrut}_{#2}}}
+\newcommand \bea {\begin{eqnarray}} 
+\newcommand \eea {\end{eqnarray}} 
+\newcommand \be {\begin{equation}} 
+\newcommand \ee {\end{equation}}
+\newcommand \sign {\hbox{sign}} 
+\newcommand{\nn} {\nonumber} 
+\newcommand{\bs} {\boldsymbol}
+\newcommand{\bd} {\boldsymbol}
+\newcommand{\mbf}{\mathbf}
+\begin{document}
+
+
+
+\title{Three qualitatively distinct mechanisms  limit diversity in microbial ecosystems }
+
+
+\date{\today{}}
+
+\begin{abstract}
+A fundamental question  in microbial ecology is to understand what determines the diversity of microbial ecosystems. To answer this question, we revisit MacArthur's Consumer Resource Model for community assembly and adapt it to the microbial setting by explicitly including metabolic cross-feeding, stochastic colonization, and thermodynamics.  Using extensive numerical simulations we demonstrate that microbial communities typically fall into one of three  distinct regimes: (a) an \emph{energy-limited regime} where diversity is constrained by the total amount of energy in the ecosystem, (b) a \emph{niche-limited regime} where diversity is constrained by the number of available metabolic niches created by cross-feeding  \red{(I like this name much better but we can debate)}, and (c) a diverse, \emph{competition-limited regime} where diversity is limited by competition between species for a large number of available niches (i.e. niche packing)  \red{(what limits diversity -- i like symmetry)}. These three regimes can be distinguished using community level diversity metrics despite extremely high-levels of ecological contingency in taxonomical composition stemming from stochastic colonization. We show that our model can reproduce large-scale ecological patterns observed across multiple experimental settings, discuss implications of our analysis for non-microbial ecosystems, and highlight the many natural connections between our analysis and the theory of disordered systems in statistical physics.
+\end{abstract}
+
+%\pacs{81.05.Uw,68.37.-d,73.20-r}
+
+
+
+\maketitle
+
+\begin{figure}
+\caption{ \red{ Make into three panels}{\bf Cross-feeding can give rise to diverse communities in environments with a single, externally supplied resource.} (A) The growth rate of each microbe is determined by the rate at which it harvests energy from the environment. For each resource type $\alpha$, a fraction $e_\alpha$ of the total energy flux $J_\alpha^\mathrm{in}$ from the import of nutrient $\alpha$ is used for growth. The remaining energy, $(1-e_\alpha) J_\alpha^\mathrm{in}$, is redeposited back into the environment as metabolic byproducts. (B) Species abundances as a function of time for a simulated ecosystem with a single externally supplied resource in the presence of crossfeeding (i.e. $e_\alpha \neq 0$). (C) Species abundances as a function to time for a simulated ecosystem with a single externally supplied resource in the absence of cross-feeding ($e_\alpha =0$).  \red{See SI or methods for parameters} }
+\end{figure}
+
+\begin{figure}
+\caption{ \red{ Lets use regimes instead of phases. These are likely not phases. The color bar need more contrast -- use diverging color palette  \url{https://seaborn.pydata.org/tutorial/color_palettes.html}. I also think use 
+different color boxes for each regime and that will serve as a guide in rest of the plots. Also do not make solid lines-- this makes it seem hard distinction.. use dashed, low-transparency line. Also we need a three panel zoom of histogram on parameters used in Figure 5 : K=28, e=0.4, K=1000 and e=0.1, and K=1000, e=0.9 with appropriate color scheme. I still think you should also put heatmap but we can argue about that} {\bf Steady-state abundance distributions as a function of metabolic efficiency $e$ and amount of externally supplied resource $K$. } \red{Details of simulations: For each choice of  $K$ and $e_\alpha$, we generated 200 species, created 10 communities of 100 species and waited until steady-state ...(i.e  high-level algorithm description)}. (Top) Histograms showing the species abundance distributions over all \red{NUMBER} simulations for a fixed $e$ and $K$ on a logarithmic scale. Histograms are colored according to the \red{average?} species richness \red{over all NUMBER simulations for each choice of $K$ and $e$}. Ecosystems can be classified into three qualitatively distinct regimes: energy-limited \red{color box}, niche-limited \red{color box}, and competition limited \red{color box}. \red{ (Bottom) Detailed histograms for ecosystems in the energy-limited'' regime ( $K=28$, $e=0.4$), niche limited regime ($K=1000, e=0.1)$, and competition limited regime ($K=1000$, e=0.9).}}
+\end{figure}
+
+\begin{figure}
+\caption{ \red{I think Figure 6 should be Figure 3} {\bf Diversity in the competition limited regime scales with the generalized niche-overlap}. We simulated communities at a fixed concentration of external resource ($K=500$) for the competition-limited ($e=0.4$) and niche-limited  ($e=0.9$) regimes while  varying the generalized niche overlap $\rho$ between members of the meta-community (Top) or the number of secondary metabolites $M$ that can be produced during cross-feeding (Bottom).  The consumer richness in the niche-limited regime was insensitive to these variations while the diversity in the competition-limited regime depends on both these parameters. The energy-limited regime behaves in a similar manner to the niche-limited regime (see main text and SI for parameters)}
+ \end{figure}
+
+\begin{figure}
+\caption{ \red{Need heat map of alpha diversity for all K and e. Keep only top two plots This is impossible to interpret and place on phase diagram. I think you need to color the row and column on heat map of top two plots to show what you are plotting. This diagrams confused me deeply as currently  constructed}  \red{Need (A) Heatmap (B) (C) - top row. Will caption after I see the plots}}
+\end{figure}
+
+\begin{figure}
+\caption{ \red{This is a fine plot but not for main text. The phases are indistinguishable as far as I am concerned}}
+\end{figure}
+
+\begin{figure}
+\caption{\red{This is a good figure mostly. First, I think the bottom heatmap should be like last time for a 15 or 20 communities so that we can see dominant species effect like the old plots  and this should be on top of PCA}
+{\bf Stochastic colonization gives rise to large beta diversity}.  One thousand communities were created for each of the three regimes ( by randomly choosing sets of 100 species from a global 
+pool of 200 species. The data for the energy- limited and efficiency-limited phases were  generated with the same parameters as Figure 4 (K=28, e=0.4 and K=1000, e=0.9, respectively). The niche-limited phase was sampled with 
+K=1000 and e=0.1. \red{(Top) Histograms from 15-20 randomly chosen communities from each of the regimes.} (Bottom) Projections of the ecosystem on the first two principal components of all simulated ecosystems.  \red{PM: WHY ARE THERE FOUR CLUSTERS? WHAT SETS THIS NUMBER? DOES THIS NUMBER DEPEND ON 100.. IF WE DO
+CLOST TO 200 GET ONE CLUSTER -- MIGHT BE WORTH SHOWING AT LEAST IN SI} }
+\end{figure}
+
+\begin{figure}
+\caption{ {\bf Prevalence versus Abundance for simulated communities.} The mean relative abundance of each species within communities where it exists is plotted vs. the fraction of communities containing the species, using the data from Figure 5. All three phases show the U-shaped prevalence distributions commonly observed in microbiome data, as well as a significant positive correlation between prevalence and abundance. \red{PM: Same Data as figure above or if not say something about how data generated -- this is good figure and caption.}}
+\end{figure}
+
+\end{document}
